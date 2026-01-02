@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الو ذغال | سفارش آنلاین ذغال </title>
+    
+    <!-- PWA Config -->
+    <link rel="manifest" href="pwa/manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="https://raw.githubusercontent.com/aloozoghal-hash/alozoghal/main/8f6dcedf3dc3dbaa82c0df548bd962c9.jpg">
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+    
+    <style>
+        :root {
+            --fire: #ff4d00;
+            --gold: #e2b04a;
+            --bg: #0a0a0a;
+            --royal: #ffd700;
+            --coal: #1a1a1a;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        body {
+            background: var(--bg);
+            color: #fff;
+            min-height: 100vh;
+            padding: 15px;
+            background-image: radial-gradient(circle at 50% 0%, #3a1100 0%, #0a0a0a 80%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+        
+        /* تیکر تبلیغاتی */
+        .ticker-container {
+            width: 100%;
+            max-width: 450px;
+            background: #000;
+            border-bottom: 2px solid var(--gold);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            margin-bottom: 15px;
+            position: relative;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .ticker-text {
+            display: inline-block;
+            padding-right: 100%;
+            animation: marquee 25s linear infinite;
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* هدر و لوگو */
+        .header-section {
+            text-align: center;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .fire-anim {
+            font-size: 32px;
+            animation: firePulse 1.5s infinite alternate;
+            filter: drop-shadow(0 0 5px #ff4d00);
+        }
+        
+        @keyframes firePulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        .main-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(226, 176, 74, 0.5);
+        }
+        
+        .brand-name {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(255, 77, 0, 0.5);
+            margin-bottom: 5px;
+        }
+        
+        .brand-slogan {
+            font-size: 16px;
+            color: var(--royal);
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
+        }
+        
+        /* استوری‌ها */
+        .stories-container {
+            display: flex;
+            gap: 15px;
+            padding: 15px 5px;
+            overflow-x: auto;
+            width: 100%;
+            max-width: 450px;
+            scrollbar-width: none;
+            margin-bottom: 20px;
+        }
+        
+        .stories-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .story-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+            cursor: pointer;
+        }
+        
+        .story-ring {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            padding: 3px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+            transition: all 0.3s;
+        }
+        
+        .story-ring:hover {
+            transform: scale(1.05);
+        }
+        
+        .story-ring.active {
+            background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+            border: none;
+            padding: 2px;
+        }
+        
+        .story-ring img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #000;
+        }
+        
+        .story-title {
+            font-size: 12px;
+            color: #ccc;
+            text-align: center;
+            max-width: 70px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* تبلیغات VIP */
+        .vip-ad-card {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 10px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: blinkBorder 3s infinite;
+        }
+        
+        @keyframes blinkBorder {
+            0%, 100% { border-color: var(--gold); box-shadow: 0 0 5px var(--gold); }
+            50% { border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.5); }
+        }
+        
+        .vip-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 1px solid var(--gold);
+        }
+        
+        .vip-info {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .vip-title {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .vip-desc {
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .btn-call-vip {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-call-vip:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+        }
+        
+        /* کارت سفارش */
+        .order-card {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #bbb;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid #333;
+            border-radius: 12px;
+            color: #fff;
+            text-align: right;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(226, 176, 74, 0.3);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        /* سبد خرید */
+        .cart-item {
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        .item-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .item-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--gold);
+        }
+        
+        .item-price {
+            font-size: 16px;
+            color: #fff;
+        }
+        
+        .qty-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #000;
+            border-radius: 12px;
+            padding: 8px;
+            border: 1px solid #333;
+        }
+        
+        .qty-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            background: #1a1a1a;
+            color: var(--gold);
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .qty-btn:hover {
+            background: #222;
+            transform: scale(1.05);
+        }
+        
+        .qty-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        /* دکمه‌ها */
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            color: #000;
+            margin-top: 20px;
+        }
+        
+        .btn-gps {
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: 1px solid #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .btn-success {
+            background: #25D366;
+            color: #fff;
+        }
+        
+        .btn-warning {
+            background: #FF9800;
+            color: #fff;
+        }
+        
+        .btn-info {
+            background: #0088cc;
+            color: #fff;
+        }
+        
+        .btn-secondary {
+            background: #444;
+            color: #fff;
+        }
+        
+        .btn-danger {
+            background: #8b0000;
+            color: #fff;
+        }
+        
+        .btn-action-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn-action-group .btn {
+            flex: 1;
+        }
+        
+        /* فاکتور */
+        .invoice-card {
+            background: #1a1a1a;
+            border: 3px double var(--gold);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .invoice-header {
+            color: var(--gold);
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+        
+        .invoice-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dotted #444;
+            font-size: 15px;
+        }
+        
+        .invoice-label {
+            color: #bbb;
+        }
+        
+        .invoice-value {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .invoice-total {
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--gold);
+        }
+        
+        .send-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        /* چالش */
+        .challenge-link {
+            display: block;
+            margin: 20px 0;
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px dashed var(--gold);
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            animation: pulseChallenge 2s infinite;
+            transition: all 0.3s;
+        }
+        
+        .challenge-link:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.02);
+        }
+        
+        @keyframes pulseChallenge {
+            0%, 100% { box-shadow: 0 0 10px var(--gold); }
+            50% { box-shadow: 0 0 20px var(--fire); }
+        }
+        
+        /* فوتر */
+        .site-footer {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(226, 176, 74, 0.3);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .footer-logo-small {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .footer-title {
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            color: #bbb;
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        
+        .footer-info-list {
+            list-style: none;
+            font-size: 14px;
+            color: #ddd;
+            margin-top: 15px;
+        }
+        
+        .footer-info-list li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-copyright {
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+        
+        /* دکمه تماس شناور */
+        .call-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gold);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 28px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .call-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 20px rgba(226, 176, 74, 0.5);
+        }
+        
+        /* دکمه اشتراک‌گذاری شناور */
+        .share-float {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .share-float:hover {
+            transform: scale(1.1) rotate(-10deg);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* دکمه مخفی پنل */
+        .secret-admin-link {
+            position: fixed;
+            top: 5px;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 9999;
+            opacity: 0.05;
+            transition: opacity 0.3s;
+        }
+        
+        .secret-admin-link:hover {
+            opacity: 0.3;
+        }
+        
+        /* هشدارها */
+        .alert {
+            padding: 12px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        .alert-info {
+            background: rgba(0, 150, 255, 0.1);
+            border: 1px solid #0096ff;
+            color: #0096ff;
+        }
+        
+        .alert-success {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid #25D366;
+            color: #25D366;
+        }
+        
+        /* مودال استوری */
+        .story-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .story-content {
+            width: 90%;
+            max-width: 400px;
+            height: 70%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .story-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10001;
+        }
+        
+        /* دکمه‌های استوری */
+        .story-buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 20px;
+            z-index: 10001;
+        }
+        
+        .story-btn {
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            min-width: 150px;
+            justify-content: center;
+        }
+        
+        .story-call-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .story-link-btn {
+            background: var(--gold);
+            color: #000;
+        }
+        
+        .story-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* بنر نصب PWA - آپدیت شده */
+        .pwa-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 15px;
+            right: 15px;
+            background: rgba(20, 20, 20, 0.98);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 15px;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(226, 176, 74, 0.6);
+            animation: slideUp 0.5s ease-out;
+            display: none; /* به صورت پیش‌فرض مخفی */
+            align-items: center;
+            gap: 15px;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .banner-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+        }
+        
+        .banner-text {
+            flex: 1;
+            font-size: 14px;
+            color: #fff;
+            text-align: right;
+        }
+        
+        .banner-text strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 3px;
+        }
+        
+        .btn-install {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .btn-install:hover {
+            background: #d4a742;
+            transform: translateY(-2px);
+        }
+        
+        .btn-close-banner {
+            background: transparent;
+            color: #ccc;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            margin-right: -5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- دکمه مخفی پنل مدیریت - آپدیت شده -->
+    <button class="secret-admin-link" id="secret-admin-btn" title="ورود به پنل مدیریت" onclick="handleAdminAccess()">⚙️</button>
+
+    <!-- تیکر تبلیغاتی -->
+    <div class="ticker-container">
+        <div class="ticker-text" id="ticker-box">🔥 الو ذغال | سفارش آنلاین ذغال مرغوب | تحویل سریع در ایذه 🔥</div>
+    </div>
+
+    <!-- بنر نصب PWA هوشمند -->
+    <div id="pwa-banner" class="pwa-banner">
+        <button class="btn-close-banner" onclick="closePwaBanner()">×</button>
+        <img src="https://raw.githubusercontent.com/aloozoghal-hash/alozoghal/main/8f6dcedf3dc3dbaa82c0df548bd962c9.jpg" class="banner-logo">
+        <div class="banner-text">
+            <strong>نصب اپلیکیشن الو ذغال</strong>
+            برای دسترسی سریع، آفلاین و تجربه‌ای بهتر
+        </div>
+        <button class="btn-install" id="installBtn">نصب اپلیکیشن</button>
+    </div>
+
+    <!-- هدر و لوگو -->
+    <div class="header-section">
+        <div class="logo-container">
+            <span class="fire-anim">🔥</span>
+            <img src="https://raw.githubusercontent.com/aloozoghal-hash/alozoghal/main/8f6dcedf3dc3dbaa82c0df548bd962c9.jpg" class="main-logo">
+            <span class="fire-anim">🔥</span>
+        </div>
+        <div class="brand-name">الو ذغال</div>
+        <div class="brand-slogan">سفارش آنلاین و سریع ذغال</div>
+        
+        <!-- استوری‌ها -->
+        <div class="stories-container" id="stories-container">
+            <!-- استوری‌ها از طریق JavaScript لود می‌شوند -->
+        </div>
+    </div>
+
+    <!-- تبلیغ VIP -->
+    <div id="vip-ad-container">
+        <!-- تبلیغات از طریق JavaScript لود می‌شوند -->
+    </div>
+
+    <!-- مودال استوری -->
+    <div id="story-modal" class="story-modal">
+        <button class="story-close" onclick="closeStory()">×</button>
+        <div class="story-content" id="story-content">
+            <!-- محتوای استوری -->
+        </div>
+        <div class="story-buttons" id="story-buttons">
+            <!-- دکمه‌های تماس و لینک -->
+        </div>
+    </div>
+
+    <!-- کارت سفارش -->
+    <div class="order-card">
+        <div id="form-area">
+            <div class="form-group">
+                <label class="form-label">👤 نام و نام خانوادگی:</label>
+                <input type="text" id="custName" class="form-input" placeholder="نام کامل خود را وارد کنید..." oninput="checkSecretCode()">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">📱 شماره تماس:</label>
+                <input type="tel" id="custPhone" class="form-input" placeholder="مثال: 09123456789" dir="ltr" pattern="[0-9]{11}" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">🕒 زمان تحویل:</label>
+                <select id="delivTime" class="form-select">
+                    <option value="فوری">فوری (30 دقیقه)</option>
+                    <option value="۱ ساعت دیگر">۱ ساعت دیگر</option>
+                    <option value="۲ ساعت دیگر">۲ ساعت دیگر</option>
+                    <option value="۳ ساعت دیگر" selected>۳ ساعت دیگر</option>
+                    <option value="۴ ساعت دیگر">۴ ساعت دیگر</option>
+                    <option value="۵ ساعت دیگر">۵ ساعت دیگر</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">🏠 آدرس محله/کوچه:</label>
+                <textarea id="custAddr" class="form-textarea" rows="3" placeholder="آدرس کامل برای ارسال پیک..."></textarea>
+            </div>
+            
+            <button class="btn btn-gps" id="gpsBtn" onclick="getLocation()">📍 ثبت لوکیشن (GPS)</button>
+            
+            <!-- سبد خرید -->
+            <div class="cart-item">
+                <div class="item-title">
+                    <span class="item-name">ذغال کبابی مرغوب</span>
+                    <span class="item-price">۶۵,۰۰۰ تومان</span>
+                </div>
+                <div class="qty-box">
+                    <button class="qty-btn" onclick="updateQty('coal', -1)">-</button>
+                    <span id="qty-coal" class="qty-display">1</span>
+                    <button class="qty-btn" onclick="updateQty('coal', 1)">+</button>
+                </div>
+            </div>
+            
+            <button class="btn btn-gold" onclick="generateInvoice()">✨ مشاهده فاکتور نهایی</button>
+        </div>
+        
+        <!-- فاکتور -->
+        <div id="invoice" class="invoice-card">
+            <div class="invoice-header">📑 فاکتور سفارش</div>
+            <div class="invoice-row">
+                <span class="invoice-label">نام مشتری:</span>
+                <span class="invoice-value" id="inv-name"></span>
+            </div>
+            <div class="invoice-row">
+                <span class="invoice-label">شماره تماس:</span>
+                <span class="invoice-value" id="inv-phone"></span>
+            </div>
+            <div class="invoice-row">
+                <span class="invoice-label">ذغال کبابی:</span>
+                <span class="invoice-value" id="inv-qty-coal"></span>
+            </div>
+            <div class="invoice-row">
+                <span class="invoice-label">زمان تحویل:</span>
+                <span class="invoice-value" id="inv-time"></span>
+            </div>
+            <div class="invoice-row">
+                <span class="invoice-label">آدرس:</span>
+                <span class="invoice-value" id="inv-addr"></span>
+            </div>
+            <div class="invoice-row">
+                <span class="invoice-label">لوکیشن:</span>
+                <span class="invoice-value" id="inv-location"></span>
+            </div>
+            
+            <div class="invoice-total" id="inv-price"></div>
+            
+            <div class="send-buttons">
+                <a id="waLink" href="#" class="btn btn-success">📱 ارسال به واتساپ</a>
+                <a id="smsLink" href="#" class="btn btn-warning">📨 ارسال پیامک</a>
+                <button id="tgBtn" class="btn btn-info">✈️ ارسال به تلگرام</button>
+            </div>
+            
+            <div class="btn-action-group">
+                <button class="btn btn-secondary" onclick="editOrder()">✏️ ویرایش سفارش</button>
+                <button class="btn btn-danger" onclick="resetForm()">🔄 سفارش جدید</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- لینک چالش -->
+    <a href="https://aloozoghal-hash.github.io/-Mir-mir-/" class="challenge-link" target="_blank">
+        💥 چالش الو ذغال رو ببر | ۳ کیسه ذغال جایزه بگیر 💥
+    </a>
+
+    <!-- فوتر -->
+    <footer class="site-footer">
+        <img src="https://raw.githubusercontent.com/aloozoghal-hash/alozoghal/main/8f6dcedf3dc3dbaa82c0df548bd962c9.jpg" class="footer-logo-small">
+        <div class="footer-title">درباره الو ذغال</div>
+        <p class="footer-text">
+            الو ذغال از دل ایذه برای سفره‌های باصفای شما. هدف ما رساندن مرغوب‌ترین ذغال کباب در کمترین زمان است.
+        </p>
+        <ul class="footer-info-list">
+            <li>📍 آدرس: ایذه، پارک لاله</li>
+            <li>📞 تلفن: ۰۹۲۲ ۰۷۳ ۰۶۲۸</li>
+            <li>🕒 پاسخگویی: ۷ صبح تا ۹ شب</li>
+        </ul>
+        <div class="footer-copyright">
+            تمامی حقوق محفوظ است<br>
+            ساخته شده با ❤️ برای ایذه
+        </div>
+    </footer>
+
+    <!-- دکمه تماس شناور -->
+    <a href="tel:09220730628" class="call-float">📞</a>
+    
+    <!-- دکمه اشتراک‌گذاری شناور -->
+    <button class="share-float" id="shareBtn" title="اشتراک‌گذاری سایت">🔗</button>
+
+    <!-- اسکریپت تبلیغات -->
+    <script src="ads-simple.js"></script>
+    
+    <!-- اسکریپت مدیریت نصب PWA -->
+    <script src="install-manager.js"></script>
+    
+    <!-- اسکریپت اصلی -->
+    <script>
+        // تنظیمات اولیه
+        const SECRET_CODE = "علی نادریان 1362541";
+        const GOOGLE_BRIDGE_URL = "https://script.google.com/macros/s/AKfycbyLQjEqmjs5Re2m7nf3lGU_IZQU0ILuFgiJWxrEQ306AgUy1zW090quuwv1QLWVOQyV/exec";
+        
+        let secretEntered = false;
+        let currentLocation = "";
+        let coalQty = 1;
+        const COAL_PRICE = 65000;
+        let finalMsg = "";
+        
+        // تیکر تبلیغاتی - از JSON بارگیری می‌شود
+        let tickerMessages = [];
+        let currentTickerIndex = 0;
+        
+        // بارگذاری داده‌ها از JSON فایل‌ها
+        async function loadData() {
+            try {
+                // بارگذاری تیکر
+                const tickerResponse = await fetch('data/ticker.json');
+                const tickerData = await tickerResponse.json();
+                tickerMessages = tickerData.messages;
+                
+                if (tickerMessages.length > 0) {
+                    initTicker();
+                    // تغییر خودکار هر 20 ثانیه
+                    setInterval(() => {
+                        currentTickerIndex = (currentTickerIndex + 1) % tickerMessages.length;
+                        updateTicker();
+                    }, 20000);
+                }
+                
+                // بارگذاری استوری‌ها
+                const storiesResponse = await fetch('data/stories.json');
+                const storiesData = await storiesResponse.json();
+                loadStories(storiesData.stories);
+                
+                // بارگذاری تبلیغات VIP
+                const vipResponse = await fetch('data/vip-ads.json');
+                const vipData = await vipResponse.json();
+                loadVipAds(vipData.ads);
+                
+            } catch (error) {
+                console.error('خطا در بارگیری داده‌ها:', error);
+                // استفاده از داده‌های پیش‌فرض
+                tickerMessages = [
+                    "🔥 الو ذغال | سفارش آنلاین ذغال مرغوب | تحویل سریع در ایذه 🔥",
+                    "✨ ذغال درجه یک با کیفیت عالی | قیمت مناسب ✨"
+                ];
+                initTicker();
+            }
+        }
+        
+        // بارگذاری استوری‌ها
+        function loadStories(stories) {
+            const container = document.getElementById('stories-container');
+            container.innerHTML = '';
+            
+            stories.filter(story => story.active).forEach(story => {
+                const storyItem = document.createElement('div');
+                storyItem.className = 'story-item';
+                storyItem.innerHTML = `
+                    <div class="story-ring" onclick="openStory(${story.id})">
+                        <img src="${story.image}" alt="${story.title}">
+                    </div>
+                    <div class="story-title">${story.title}</div>
+                `;
+                container.appendChild(storyItem);
+            });
+        }
+        
+        // بارگذاری تبلیغات VIP
+        function loadVipAds(ads) {
+            const container = document.getElementById('vip-ad-container');
+            container.innerHTML = '';
+            
+            const activeAds = ads.filter(ad => ad.active);
+            if (activeAds.length === 0) return;
+            
+            const ad = activeAds[0]; // نمایش اولین تبلیغ فعال
+            const adCard = document.createElement('div');
+            adCard.className = 'vip-ad-card';
+            adCard.innerHTML = `
+                <img src="${ad.image}" class="vip-img" alt="${ad.title}">
+                <div class="vip-info">
+                    <div class="vip-title">${ad.title}</div>
+                    <div class="vip-desc">${ad.description}</div>
+                    <a href="tel:${ad.phone}" class="btn-call-vip">📞 تماس VIP</a>
+                    <a href="https://wa.me/${ad.whatsapp}" class="btn-call-vip" style="background: #25D366; margin-right: 10px;">💬 واتساپ</a>
+                </div>
+            `;
+            container.appendChild(adCard);
+        }
+        
+        // باز کردن استوری
+        function openStory(storyId) {
+            // در اینجا باید دیتای استوری را از آرایه پیدا کنیم
+            // فعلاً یک نمونه نشان می‌دهیم
+            document.getElementById('story-content').innerHTML = `
+                <img src="https://via.placeholder.com/400x600" class="story-img" alt="Story">
+            `;
+            
+            document.getElementById('story-buttons').innerHTML = `
+                <a href="tel:09220730628" class="story-btn story-call-btn">📞 تماس</a>
+                <a href="https://wa.me/989220730628" class="story-btn story-link-btn">💬 واتساپ</a>
+            `;
+            
+            document.getElementById('story-modal').style.display = 'flex';
+        }
+        
+        // بستن استوری
+        function closeStory() {
+            document.getElementById('story-modal').style.display = 'none';
+        }
+        
+        function initTicker() {
+            if (tickerMessages.length > 0) {
+                updateTicker();
+            }
+        }
+        
+        function updateTicker() {
+            if(tickerMessages.length === 0) return;
+            document.getElementById('ticker-box').textContent = tickerMessages[currentTickerIndex];
+        }
+        
+        // مدیریت کمیت
+        function updateQty(type, change) {
+            if(type === 'coal') {
+                const newQty = coalQty + change;
+                if(newQty >= 1 && newQty <= 20) {
+                    coalQty = newQty;
+                    document.getElementById('qty-coal').textContent = coalQty;
+                }
+            }
+        }
+        
+        // دریافت لوکیشن
+        function getLocation() {
+            const gpsBtn = document.getElementById('gpsBtn');
+            if(!navigator.geolocation) {
+                gpsBtn.innerHTML = '❌ مرورگر شما از GPS پشتیبانی نمی‌کند';
+                return;
+            }
+            
+            gpsBtn.innerHTML = '⏳ در حال دریافت لوکیشن...';
+            gpsBtn.disabled = true;
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    currentLocation = `https://www.google.com/maps?q=${lat},${lng}`;
+                    
+                    gpsBtn.innerHTML = '✅ لوکیشن ثبت شد';
+                    gpsBtn.style.background = 'rgba(37, 211, 102, 0.2)';
+                    gpsBtn.style.borderColor = '#25D366';
+                    gpsBtn.style.color = '#25D366';
+                    
+                    // نمایش هشدار موفقیت
+                    showAlert('لوکیشن شما با موفقیت ثبت شد!', 'success');
+                },
+                (error) => {
+                    console.error('خطا در دریافت موقعیت:', error);
+                    gpsBtn.innerHTML = '❌ خطا در دریافت لوکیشن';
+                    gpsBtn.style.background = 'rgba(255, 0, 0, 0.2)';
+                    gpsBtn.style.borderColor = '#ff0000';
+                    gpsBtn.style.color = '#ff0000';
+                    
+                    showAlert('خطا در دریافت موقعیت. لطفاً دسترسی به موقعیت مکانی را فعال کنید.', 'info');
+                }
+            );
+        }
+        
+        // نمایش هشدار
+        function showAlert(message, type = 'info') {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+            
+            // اضافه کردن به فرم
+            const formArea = document.getElementById('form-area');
+            formArea.insertBefore(alertDiv, formArea.firstChild);
+            
+            // حذف خودکار بعد از 5 ثانیه
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+        
+        // تولید فاکتور
+        function generateInvoice() {
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const addr = document.getElementById('custAddr').value.trim();
+            const time = document.getElementById('delivTime').value;
+            
+            // اعتبارسنجی
+            if(!name || name.length < 2) {
+                showAlert('لطفاً نام کامل خود را وارد کنید (حداقل ۲ حرف)', 'info');
+                document.getElementById('custName').focus();
+                return;
+            }
+            
+            if(!phone || phone.length < 10 || !phone.match(/^[0-9]{10,11}$/)) {
+                showAlert('لطفاً شماره تماس معتبر وارد کنید (۱۰-۱۱ رقم)', 'info');
+                document.getElementById('custPhone').focus();
+                return;
+            }
+            
+            if(!addr || addr.length < 10) {
+                showAlert('لطفاً آدرس کامل با حداقل ۱۰ کاراکتر وارد کنید', 'info');
+                document.getElementById('custAddr').focus();
+                return;
+            }
+            
+            // محاسبه قیمت
+            const totalPrice = coalQty * COAL_PRICE;
+            
+            // پر کردن فاکتور
+            document.getElementById('inv-name').textContent = name;
+            document.getElementById('inv-phone').textContent = phone;
+            document.getElementById('inv-qty-coal').textContent = `${coalQty} کیسه`;
+            document.getElementById('inv-time').textContent = time;
+            document.getElementById('inv-addr').textContent = addr;
+            document.getElementById('inv-location').textContent = currentLocation ? 'ثبت شده' : 'ثبت نشده';
+            document.getElementById('inv-price').textContent = `${totalPrice.toLocaleString()} تومان`;
+            
+            // تولید پیام سفارش
+            finalMsg = `سفارش جدید الو ذغال 🔥
+            
+👤 نام: ${name}
+📱 تلفن: ${phone}
+📦 ذغال: ${coalQty} کیسه
+💰 مبلغ: ${totalPrice.toLocaleString()} تومان
+🕒 زمان تحویل: ${time}
+🏠 آدرس: ${addr}
+${currentLocation ? `📍 لوکیشن: ${currentLocation}` : ''}
+⏰ زمان سفارش: ${new Date().toLocaleString('fa-IR')}`;
+            
+            // لینک واتساپ
+            const waMessage = encodeURIComponent(`سلام الو ذغال 🔥
+
+👤 نام: ${name}
+📱 تلفن: ${phone}
+📦 ذغال: ${coalQty} کیسه
+💰 مبلغ: ${totalPrice.toLocaleString()} تومان
+🕒 تحویل: ${time}
+🏠 آدرس: ${addr}
+${currentLocation ? `📍 لوکیشن: ${currentLocation}` : ''}
+
+لطفاً این سفارش را تأیید کنید.`);
+            
+            document.getElementById('waLink').href = `https://wa.me/989220730628?text=${waMessage}`;
+            
+            // لینک پیامک
+            const smsMessage = encodeURIComponent(`سفارش الو ذغال
+نام: ${name}
+تلفن: ${phone}
+ذغال: ${coalQty} کیسه
+مبلغ: ${totalPrice.toLocaleString()}
+تحویل: ${time}
+آدرس: ${addr}`);
+            
+            document.getElementById('smsLink').href = `sms:989220730628?body=${smsMessage}`;
+            
+            // تنظیم event listener برای دکمه تلگرام
+            document.getElementById('tgBtn').onclick = sendToTelegram;
+            
+            // نمایش فاکتور و مخفی کردن فرم
+            document.getElementById('form-area').style.display = 'none';
+            document.getElementById('invoice').style.display = 'block';
+            
+            // اسکرول به فاکتور
+            document.getElementById('invoice').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // ارسال به تلگرام از طریق Google Apps Script
+        async function sendToTelegram() {
+            const btn = document.getElementById('tgBtn'); 
+            btn.disabled = true; 
+            btn.innerText = "⏳ در حال ارسال سیستمی...";
+            
+            try {
+                // ارسال داده‌ها به Google Apps Script
+                await fetch(GOOGLE_BRIDGE_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: finalMsg,
+                        action: 'send_order'
+                    })
+                });
+                
+                btn.innerHTML = "✅ ارسال شد";
+                showAlert('سفارش شما به تلگرام ارسال شد!', 'success');
+                
+            } catch (error) {
+                console.error('خطا در ارسال به تلگرام:', error);
+                btn.innerHTML = "❌ خطا در ارسال";
+                showAlert('خطا در ارسال به تلگرام. لطفاً با واتساپ یا پیامک ارسال کنید.', 'info');
+            } finally {
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = "✈️ ارسال به تلگرام";
+                }, 3000);
+            }
+        }
+        
+        // ویرایش سفارش
+        function editOrder() {
+            document.getElementById('invoice').style.display = 'none';
+            document.getElementById('form-area').style.display = 'block';
+            document.getElementById('form-area').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // ریست فرم
+        function resetForm() {
+            document.getElementById('custName').value = '';
+            document.getElementById('custPhone').value = '';
+            document.getElementById('custAddr').value = '';
+            document.getElementById('delivTime').value = '۳ ساعت دیگر';
+            coalQty = 1;
+            document.getElementById('qty-coal').textContent = '1';
+            currentLocation = '';
+            
+            const gpsBtn = document.getElementById('gpsBtn');
+            gpsBtn.innerHTML = '📍 ثبت لوکیشن (GPS)';
+            gpsBtn.disabled = false;
+            gpsBtn.style.background = '';
+            gpsBtn.style.borderColor = '';
+            gpsBtn.style.color = '';
+            
+            document.getElementById('invoice').style.display = 'none';
+            document.getElementById('form-area').style.display = 'block';
+            
+            showAlert('فرم با موفقیت ریست شد. می‌توانید سفارش جدیدی ثبت کنید.', 'success');
+        }
+        
+        // بررسی رمز مخفی
+        function checkSecretCode() {
+            const nameInput = document.getElementById('custName').value.trim();
+            if (nameInput === SECRET_CODE) {
+                secretEntered = true;
+                document.getElementById('secret-admin-btn').style.opacity = '1';
+                showAlert('دسترسی مدیریت فعال شد! دکمه پنل مدیریت در گوشه بالا سمت چپ نمایان شد.', 'success');
+            }
+        }
+        
+        // مدیریت دسترسی به پنل مدیریت
+        function handleAdminAccess() {
+            if (secretEntered) {
+                window.open('admin-panel.html', '_blank');
+            } else {
+                showAlert('برای دسترسی به پنل مدیریت، ابتدا رمز مخفی را در فیلد نام وارد کنید.', 'info');
+            }
+        }
+        
+        // اشتراک‌گذاری
+        document.getElementById('shareBtn').addEventListener('click', async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'الو ذغال',
+                        text: 'سفارش آنلاین ذغال مرغوب در ایذه',
+                        url: window.location.href,
+                    });
+                } catch (err) {
+                    console.log('اشتراک‌گذاری لغو شد:', err);
+                }
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const shareUrl = `https://wa.me/?text=${encodeURIComponent('سفارش ذغال از الو ذغال 🔥\n' + window.location.href)}`;
+                window.open(shareUrl, '_blank');
+            }
+        });
+        
+        // بستن بنر PWA
+        function closePwaBanner() {
+            document.getElementById('pwa-banner').style.display = 'none';
+            localStorage.setItem('pwa_banner_closed', 'true');
+        }
+        
+        // بارگذاری اولیه
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            
+            // نمایش بنر PWA اگر قبلاً بسته نشده
+            if (!localStorage.getItem('pwa_banner_closed')) {
+                // نمایش بنر با تأخیر 3 ثانیه
+                setTimeout(() => {
+                    document.getElementById('pwa-banner').style.display = 'flex';
+                }, 3000);
+            }
+        });
+    </script>
+    
+    <!-- ثبت Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('pwa/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker ثبت شد:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('خطا در ثبت ServiceWorker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
