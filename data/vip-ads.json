@@ -1,0 +1,38 @@
+{
+  "ads": [
+    {
+      "id": 1,
+      "title": "ذغال VIP درجه یک",
+      "description": "ذغال مرغوب با کیفیت عالی، مناسب برای قلیان و کباب. تضمین بهترین کیفیت با قیمت مناسب.",
+      "image": "https://raw.githubusercontent.com/aloozoghal-hash/alozoghal/main/8f6dcedf3dc3dbaa82c0df548bd962c9.jpg",
+      "phone": "09220730628",
+      "whatsapp": "989220730628",
+      "active": true,
+      "priority": 1,
+      "backgroundColor": "#1a1a1a",
+      "textColor": "#e2b04a",
+      "createdAt": "2024-01-15",
+      "expiresAt": "2024-12-31"
+    },
+    {
+      "id": 2,
+      "title": "پک اقتصادی ۳ کیسه",
+      "description": "۳ کیسه ذغال مرغوب با ۱۵٪ تخفیف ویژه. مناسب برای مهمانی‌ها و مجالس.",
+      "image": "https://via.placeholder.com/400x300/333333/e2b04a?text=%D9%BE%DA%A9+%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%DB%8C+%DB%B3+%DA%A9%DB%8C%D8%B3%D9%87",
+      "phone": "09220730628",
+      "whatsapp": "989220730628",
+      "active": true,
+      "priority": 2,
+      "backgroundColor": "#0a3d2a",
+      "textColor": "#ffffff",
+      "createdAt": "2024-01-15",
+      "expiresAt": "2024-12-31"
+    }
+  ],
+  "settings": {
+    "maxActiveAds": 2,
+    "rotationInterval": 30000,
+    "showWhatsApp": true,
+    "showPhone": true
+  }
+}
