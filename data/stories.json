@@ -1,0 +1,50 @@
+{
+  "stories": [
+    {
+      "id": 1,
+      "title": "ذغال جدید",
+      "image": "https://raw.githubusercontent.com/aloozoghal-hash/alozoghal/main/8f6dcedf3dc3dbaa82c0df548bd962c9.jpg",
+      "phone": "09220730628",
+      "whatsapp": "989220730628",
+      "active": true,
+      "order": 1,
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "title": "تخفیف ویژه",
+      "image": "https://via.placeholder.com/400x600/333333/FFFFFF?text=%D8%AA%D8%AE%D9%81%DB%8C%D9%81+%D9%88%DB%8C%DA%98%D9%87+%D8%B0%D8%BA%D8%A7%D9%84",
+      "phone": "09220730628",
+      "whatsapp": "989220730628",
+      "active": true,
+      "order": 2,
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": 3,
+      "title": "کیفیت عالی",
+      "image": "https://via.placeholder.com/400x600/555555/FFFFFF?text=%DA%A9%DB%8C%D9%81%DB%8C%D8%AA+%D8%B9%D8%A7%D9%84%DB%8C+%D8%B0%D8%BA%D8%A7%D9%84",
+      "phone": "09220730628",
+      "whatsapp": "989220730628",
+      "active": true,
+      "order": 3,
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": 4,
+      "title": "تحویل فوری",
+      "image": "https://via.placeholder.com/400x600/777777/FFFFFF?text=%D8%AA%D8%AD%D9%88%DB%8C%D9%84+%D9%81%D9%88%D8%B1%DB%8C+30+%D8%AF%D9%82%DB%8C%D9%82%D9%87",
+      "phone": "09220730628",
+      "whatsapp": "989220730628",
+      "active": true,
+      "order": 4,
+      "createdAt": "2024-01-15"
+    }
+  ],
+  "settings": {
+    "maxStories": 8,
+    "storyDuration": 5000,
+    "showButtons": true,
+    "autoPlay": true
+  }
+}
