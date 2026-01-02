@@ -1,0 +1,32 @@
+{
+  "app": {
+    "name": "الو ذغال",
+    "version": "1.0.0",
+    "owner": "علی نادریان",
+    "phone": "09220730628",
+    "whatsapp": "989220730628",
+    "location": "ایذه، پارک لاله",
+    "workingHours": "۷ صبح تا ۹ شب"
+  },
+  "prices": {
+    "coalPrice": 65000,
+    "freeDeliveryMin": 2,
+    "deliveryFee": 0,
+    "currency": "تومان"
+  },
+  "features": {
+    "enableGPS": true,
+    "enableWhatsApp": true,
+    "enableSMS": true,
+    "enableTelegram": false,
+    "enableStories": true,
+    "enableVipAds": true,
+    "enableTicker": true
+  },
+  "admin": {
+    "secretCode": "علی نادریان 1362541",
+    "autoBackup": true,
+    "backupInterval": 3600000,
+    "maxBackups": 10
+  }
+}
